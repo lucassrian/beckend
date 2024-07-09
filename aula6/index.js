@@ -1,0 +1,78 @@
+/*let nome:string = 'lucas'
+
+let idade:number  = 16
+
+let souEstudante:boolean  = true
+console.log(`Meu nome é ${nome} e tenho ${idade} anos. Sou estudante?${souEstudante}`)*/
+/*import * as readlineSync from 'readline-sync';
+
+let nome:string =(readlineSync.question('Informe o seu nome:'))
+
+let idade:number  = readlineSync.question('Informe a sua idade:')
+
+let temCarteira:string  = readlineSync.question('Você tem carteira:')
+if
+
+function podeDirigir (nome:string, idade:number, temCarteira:string):void{
+    if ( idade > 18 && temCarteira === 'sim' ){
+        console.log('Pode dirigir!!');
+    } else{
+        console.log('Não pode dirigir');
+}
+        
+}
+podeDirigir( nome, idade, temCarteira)*/
+// ARRAY
+/*let arr:Array<number> - [1, 2, 3, 4]
+
+//ou
+
+let array:number[]= [1, 2, 3, 4]
+
+// OBJETOS
+
+let person:(name:string, age:number)= {
+    name:'luacas'
+    age:16
+}
+
+// FUNCTION
+
+function soma(num1:number, num2:number):number{
+    return num1+num2
+}
+
+
+function frase(nome:string)string{
+    return `Olá ${nome}, tudo bem?`
+}
+
+function frase(name?:string)void{
+    console.log("hello", name || "world")
+
+    // o "?" faz com que se não imprimir o "name" ele imprima "world"
+
+}*/
+// Molde para objetos tipo cachorro
+var Cachorro = /** @class */ (function () {
+    function Cachorro(dogNome, dogPeso, dogPelagem) {
+        this.nome = dogNome;
+        this.peso = dogPeso;
+        this.pelagem = dogPelagem;
+        this.raça = 'raça';
+    }
+    Cachorro.prototype.latir = function () {
+        console.log("".concat(this.nome, " est\u00E1 latindo."));
+    };
+    Cachorro.prototype.correr = function () {
+        console.log("".concat(this.nome, " o cachorro est\u00E1 correndo."));
+    };
+    Cachorro.prototype.comer = function () {
+        console.log("".concat(this.nome, " o cachorro est\u00E1 comendo."));
+    };
+    return Cachorro;
+}());
+var meuCachorro = new Cachorro('Tomy', 5, 'amarelo');
+console.log(meuCachorro.nome);
+meuCachorro.latir();
+meuCachorro.correr();
