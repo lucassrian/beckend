@@ -52,14 +52,7 @@ CREATE TABLE alugueis_carros (
 
 --instrução 6
 
-Para inserir 30 registros na tabela alugueis_carros, atendendo às regras especificadas, aqui está um conjunto de inserções que distribui os aluguéis entre os clientes conforme solicitado:
 
-Regras:
-Pelo menos 2 clientes devem ter realizado 6 aluguéis cada.
-Pelo menos 3 clientes devem ter realizado 4 aluguéis cada.
-Inserção de Registros
-sql
-Copiar código
 -- Inserir 6 aluguéis para o Cliente 1
 INSERT INTO alugueis_carros (ID_Carro, ID_Cliente, DataInicio, DataTermino, ValorTotal) VALUES
 (1, 1, '2024-01-01', '2024-01-05', 500.00),
@@ -101,15 +94,18 @@ INSERT INTO alugueis_carros (ID_Carro, ID_Cliente, DataInicio, DataTermino, Valo
 
 
 --instrução 7 
-SELECT c.ID, c.Nome, SUM(a.ValorTotal) AS GastoTotal
-FROM clientes c
-JOIN alugueis_carros a ON c.ID = a.ID_Cliente
-GROUP BY c.ID, c.Nome
-ORDER BY GastoTotal DESC;
+SELECT clientes.Nome AS NomeCliente,SUM(ValorTotal) AS TotalGasto
+FROM clientes
+LEFT JOIN alugueis_carros ON clientes.ID = alugueis_carros.ID_Cliente
+GROUP BY clientes.ID, clientes.Nome
+ORDER BY TotalGasto DESC;
 
 --instrução 8
-SELECT ca.ID, ca.Modelo, ca.Marca, COUNT(a.ID_Carro) AS TotalAlugueis
-FROM carros_aluguel ca
-LEFT JOIN alugueis_carros a ON ca.ID = a.ID_Carro
-GROUP BY ca.ID, ca.Modelo, ca.Marca
+SELECT carros_aluguel.ID, carros_aluguel.Modelo, carros_aluguel.Marca, COUNT(ValorTotal) AS TotalAlugueis
+FROM carros_aluguel
+LEFT JOIN alugueis_carros ON carros_aluguel.ID = alugueis_carros.ID_Carro
+GROUP BY  carros_aluguel.Modelo
 ORDER BY TotalAlugueis DESC;
+
+
+
